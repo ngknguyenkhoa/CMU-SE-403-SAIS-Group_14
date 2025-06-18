@@ -1,0 +1,28 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+def generate_fibonacci(n):
+    if n <= 0:
+        return []
+    fib = [0]
+    if n > 1:
+        fib.append(1)
+    for i in range(2, n):
+        fib.append(fib[-1] + fib[-2])
+    return fib
+
+@app.route('/fibonacci', methods=['GET'])
+def fibonacci_endpoint():
+    try:
+        n = int(request.args.get('n', 10))  # Mặc định n = 10 nếu không truyền
+        result = generate_fibonacci(n)
+        return jsonify({
+            'input': n,
+            'fibonacci': result
+        })
+    except ValueError:
+        return jsonify({'error': 'Invalid input'}), 400
+
+if __name__ == '__main__':
+    app.run(debug=True)
