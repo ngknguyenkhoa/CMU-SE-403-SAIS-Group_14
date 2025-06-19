@@ -1,0 +1,6 @@
+Các câu hỏi về tính khả dụng (availability)
+    1/ Có kiểm tra input n là số nguyên hợp lệ, không âm và không quá lớn chưa?
+
+    2/ Có sử dụng cache để giảm tải tính toán lại khi n giống nhau không?
+
+    3/ Nếu người dung truyền n quá lón, vd: n=1000000, hệ thống có bị treo không?
